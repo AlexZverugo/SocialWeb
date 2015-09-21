@@ -39,6 +39,5 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
     </bean>
 
     <bean id="userService" class="service.impl.UserService"/>
-    <bean id="socialWebDAO" class="dao.impl.UserDAOImpl"></bean>
 
 </beans>
