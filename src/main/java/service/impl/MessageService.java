@@ -1,9 +1,11 @@
 package service.impl;
 
+import dao.SocialWebDAO;
 import entity.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import service.common.BaseService;
+import service.SocialWebService;
 
 import java.util.List;
 
@@ -12,16 +14,38 @@ import java.util.List;
  */
 
 @Service("messageService")
-public class MessageService extends BaseService<Message> {
+public class MessageService implements SocialWebService<Message> {
+
+    @Autowired
+    private SocialWebDAO messageDAO;
+
+    @Override
+    @Transactional
+    public void addData(Message data) {
+        messageDAO.addData(data);
+    }
+
+    @Override
+    @Transactional
+    public void deleteData(Message data) {
+        messageDAO.deleteData(data);
+    }
+
+    @Override
+    @Transactional
+    public void updateData(Message data) {
+        messageDAO.updateData(data);
+    }
+
     @Override
     @Transactional
     public Message getData(long id) {
-        return (Message) getSocialWebDAO().getData(id);
+        return (Message) messageDAO.getData(id);
     }
 
     @Override
     @Transactional
     public List<Message> getListOfData() {
-        return getSocialWebDAO().getListOfData();
+        return messageDAO.getListOfData();
     }
 }

@@ -2,7 +2,6 @@ package dao;
 
 import entity.common.SocialWebEntity;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**

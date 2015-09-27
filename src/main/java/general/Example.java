@@ -1,10 +1,8 @@
 package general;
 
-import dao.impl.UserDAOImpl;
 import entity.User;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import service.common.BaseService;
 import service.impl.UserService;
 
 /**
@@ -28,10 +26,9 @@ public class Example {
         user.setActive(true);
         user.setPassword("1ssd4556");
 
-        BaseService service = (UserService) context.getBean("userService");
-        service.setSocialWebDAO(new UserDAOImpl());
+//        UserService service = (UserService) context.getBean("userService");
 
-        service.addData(user);
+//        service.addData(user);
 
         context.close();
     }

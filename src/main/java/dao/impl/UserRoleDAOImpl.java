@@ -2,13 +2,14 @@ package dao.impl;
 
 import dao.common.BaseDAO;
 import entity.UserRole;
+import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**
  * Created by Alex on 14.09.2015.
  */
+@Repository("userRoleDAO")
 public class UserRoleDAOImpl extends BaseDAO<UserRole> {
 
     @Override

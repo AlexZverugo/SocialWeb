@@ -2,11 +2,8 @@ package dao.impl;
 
 import dao.common.BaseDAO;
 import entity.Message;
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
-import util.HibernateUtil;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**

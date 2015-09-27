@@ -4,7 +4,6 @@ import dao.common.BaseDAO;
 import entity.User;
 import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
 import java.util.List;
 
 /**

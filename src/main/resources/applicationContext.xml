@@ -2,14 +2,15 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/task" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans-2.0.xsd http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="java.dao"/>
-    <mvc:annotation-driven/>
-    <!--<tx:annotation-driven/>-->
+    <context:component-scan base-package="dao"/>
+    <context:component-scan base-package="service"/>
+    <context:annotation-config />
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
@@ -25,7 +26,7 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="packagesToScan"
-                  value="java.entity" />
+                  value="entity" />
         <property name="hibernateProperties">
             <props>
                 <prop key="dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
@@ -38,6 +39,5 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <bean id="userService" class="service.impl.UserService"/>
 
 </beans>
